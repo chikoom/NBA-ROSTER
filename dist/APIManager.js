@@ -7,5 +7,10 @@ class APIManager {
       renderCallback(data)
     })
   }
+  getPlayerStats(playerObject, renderCallback, element){
+    $.get(`/playerStats/${playerObject.lastname}/${playerObject.firstname}`, function(data){
+      renderCallback(JSON.parse(data), element)
+    })
+  }
 
 }

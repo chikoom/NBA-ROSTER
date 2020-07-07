@@ -18,14 +18,28 @@
   </div>
   
   <script id="players-template" type="text/x-handlebars-template">
+    <div id="team-logo">
+      <img src="http://i.cdn.turner.com/nba/nba/.element/img/1.0/teamsites/logos/teamlogos_500x500/por.png">
+    </div>
     {{#each players}}
-      <div class="player-container">
+      <div class="player-container" data-firstname="{{firstName}}" data-lastname="{{lastName}}">
         <h3 class="player-name">{{firstName}} {{lastName}}</h3>
-        <span class="player-jersey">{{jersey}}</span>
-        <img onerror="this.src='./player.png'" src="https://nba-players.herokuapp.com/players/{{lastName}}/{{firstName}}">
         <span class="player-position">{{position}}</span>
+        <img onerror="this.src='./player.png'" src="https://nba-players.herokuapp.com/players/{{lastName}}/{{firstName}}">
+        <span class="player-jersey">{{jersey}}</span>
       </div>
     {{/each}}
+  </script>
+
+  <script id="stats-template" type="text/x-handlebars-template">
+    <div class="player-stats">
+      {{#each data}}
+        <div class="player-stats-row">
+          <div class="player-stats-attr">{{@key}}</div>
+          <div class="player-stats-rank">{{this}}</div>
+        </div>
+      {{/each}}
+    </div>
   </script>
 
   <script src="./handlebars/dist/handlebars.min.js"></script>

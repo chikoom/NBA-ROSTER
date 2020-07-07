@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@300;400;600;700&display=swap');
+body, html {
+    margin:0;
+    padding: 0;
+    font-family: 'Josefin Slab', serif;
+}
+button{
+    outline: 0;
+    border:0;
+}
+nav{
+    width:100%;
+    height: 50px;
+    background-color: #1a53a5;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 5fr 5fr;;
+}
+#root-app{
+
+}
+#all-players-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.player-container{
+    display: grid;
+    grid-template-rows: auto;
+    text-align: center;
+    border:2px solid #333;
+    margin: 10px 0;
+    cursor: pointer;
+    position: relative;
+}
+.player-container:hover{
+    background-color: #f29898;
+}
+.player-container img{
+    padding: 10px;
+}
+.player-jersey{
+    padding: 10px;
+    font-weight: 700;
+}
+input {
+    font-size: 20px;
+    font-family: 'Josefin Slab', serif;
+    font-weight: 700;
+    padding: 10px 20px;
+}
+#btn-search{
+    margin: 5px;
+    font-family: 'Josefin Slab', serif;
+    font-weight: 700;
+    font-size: 20px;
+    background-color: #ff0000;
+    color:#fff;
+    cursor: pointer;
+}
+#btn-search:hover{
+    background-color: #de4f4f;
+}
+#btn-search:active{
+    background-color: #ff0000;
+}
+.player-stats{
+    display: grid;
+    grid-template-rows: auto;
+    position: absolute;
+    top:0;
+    left:0;
+    height: 98%;
+    width: 100%;
+    background-color: rgba(255,255,255,0.93);
+    padding: 1% 0;
+}
+.player-stats-row{
+    display: grid;
+    grid-template-columns: 7fr 5fr;
+    max-width: 100%;
+    text-align: left;
+    padding-left: 20px;
+    grid-gap:10px;
+    font-size: 13px;
+    border-bottom: 1px solid #bbb;
+    align-content: center;
+}
+.player-stats-rank{
+    text-align: center;
+    
+}
