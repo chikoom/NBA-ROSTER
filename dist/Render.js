@@ -2,10 +2,10 @@ class Render {
   constructor(){
   }
   renderPlayers(data){
-    $(`#all-players-container`).empty()
+    $(`#result`).empty()
     const template = Handlebars.compile($(`#players-template`).html());
-    const HTML = template({ players:data })
-    $(`#all-players-container`).append(HTML)
+    const HTML = template({ data })
+    $(`#result`).append(HTML)
     console.log(data)
   }
   renderPlayerStats(data, element){

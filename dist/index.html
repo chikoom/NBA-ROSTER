@@ -12,16 +12,17 @@
       <input id="inp-team" type="text">
       <button id="btn-search">Get Roster</button>
     </nav>
-    <div id="all-players-container">
+    <div id="result">
 
     </div>
   </div>
   
   <script id="players-template" type="text/x-handlebars-template">
     <div id="team-logo">
-      <img src="http://i.cdn.turner.com/nba/nba/.element/img/1.0/teamsites/logos/teamlogos_500x500/por.png">
+      <img src="http://i.cdn.turner.com/nba/nba/.element/img/1.0/teamsites/logos/teamlogos_500x500/{{data.teamAcr}}.png">
     </div>
-    {{#each players}}
+    <div id="all-players-container">
+    {{#each data.playersData}}
       <div class="player-container" data-firstname="{{firstName}}" data-lastname="{{lastName}}">
         <h3 class="player-name">{{firstName}} {{lastName}}</h3>
         <span class="player-position">{{position}}</span>
@@ -29,6 +30,7 @@
         <span class="player-jersey">{{jersey}}</span>
       </div>
     {{/each}}
+    </div>
   </script>
 
   <script id="stats-template" type="text/x-handlebars-template">

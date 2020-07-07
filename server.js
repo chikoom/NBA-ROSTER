@@ -230,6 +230,7 @@ app.get('/teams/:teamName', (request, response) => {
   for(team of teamsData){
     if(team.simpleName.toLowerCase() === request.params.teamName){
       reqTeamID = String(team.teamId)
+      teamAcr = team.abbreviation.toLowerCase()
     }
   }
   urllib.request(APIURL, function (err, data, res) {
@@ -241,7 +242,7 @@ app.get('/teams/:teamName', (request, response) => {
     const reqTeamActivePlayers = allPlayersArary.filter(player => 
       player.teamId === reqTeamID && player.isActive === true)
     
-    const relevantData = reqTeamActivePlayers.map(player => {
+    const playersData = reqTeamActivePlayers.map(player => {
       return {
         firstName: player.firstName,
         lastName: player.lastName,
@@ -250,7 +251,10 @@ app.get('/teams/:teamName', (request, response) => {
       }
     })
 
-    response.send(relevantData)
+    //response.send(relevantData)
+    response.send({ teamAcr,
+                    playersData
+                  })
   })
 })
 
