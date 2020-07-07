@@ -20,7 +20,10 @@
   <script id="players-template" type="text/x-handlebars-template">
     {{#each players}}
       <div class="player-container">
-        {{name}}
+        <h3 class="player-name">{{firstName}} {{lastName}}</h3>
+        <span class="player-jersey">{{jersey}}</span>
+        <img onerror="this.src='./player.png'" src="https://nba-players.herokuapp.com/players/{{lastName}}/{{firstName}}">
+        <span class="player-position">{{position}}</span>
       </div>
     {{/each}}
   </script>

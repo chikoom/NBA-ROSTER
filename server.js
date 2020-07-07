@@ -2,10 +2,11 @@ const express = require('express')
 const path = require('path')
 const urllib = require('urllib')
 
-
 const app = express()
 
 const APIURL = 'http://data.nba.net/10s/prod/v1/2018/players.json'
+const IMAGEURLS = 'https://nba-players.herokuapp.com/players/:lastName/:firstName'
+
 const teamToIDs = {
   "lakers": "1610612747",
   "warriors": "1610612744",
@@ -26,7 +27,17 @@ app.get('/teams/:teamName', (request, response) => {
     const allPlayersArary = JSON.parse(data).league.standard
     const reqTeamActivePlayers = allPlayersArary.filter(player => 
       player.teamId === reqTeamID && player.isActive === true)
-    response.send(reqTeamActivePlayers)
+    
+    const relevantData = reqTeamActivePlayers.map(player => {
+      return {
+        firstName: player.firstName,
+        lastName: player.lastName,
+        jersey: player.jersey,
+        position: player.pos
+      }
+    })
+
+    response.send(relevantData)
   })
 })
 
@@ -34,3 +45,6 @@ const PORT = 3000
 app.listen(PORT,() => {
   console.log(`Server is up and running (PORT: ${PORT})`)
 })
+
+
+
