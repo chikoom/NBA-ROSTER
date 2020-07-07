@@ -1,5 +1,6 @@
 const express = require('express')
-const urllib = require('urllib');
+const path = require('path')
+const urllib = require('urllib')
 
 
 const app = express()
@@ -11,6 +12,9 @@ const teamToIDs = {
   "heat": "1610612748",
   "suns": "1610612756"
 }
+
+app.use(express.static(path.join(__dirname, 'dist')))
+app.use(express.static(path.join(__dirname, 'node_modules')))
 
 app.get('/teams/:teamName', (request, response) => {
   const reqTeamID = teamToIDs[request.params.teamName]
