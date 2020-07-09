@@ -14,8 +14,13 @@ nav{
     background-color: #1a53a5;
     display: grid;
     justify-content: center;
-    grid-template-columns: 5fr 5fr;
+    grid-template-columns: 6fr 3fr 3fr;
     margin: 2% 5%;
+    grid-gap: 10px;
+}
+#root-app{
+    max-width: 100%;
+    position: relative;
 }
 #all-players-container{
     display: flex;
@@ -64,6 +69,21 @@ input {
 #btn-search:active{
     background-color: #ff0000;
 }
+#btn-dream{
+    margin: 5px;
+    font-family: 'Josefin Slab', serif;
+    font-weight: 700;
+    font-size: 20px;
+    background-color: #ff0000;
+    color:#fff;
+    cursor: pointer;
+}
+#btn-dream:hover{
+    background-color: #de4f4f;
+}
+#btn-dream:active{
+    background-color: #ff0000;
+}
 #team-logo{
     text-align: center;
 }
@@ -95,4 +115,13 @@ input {
 .player-stats-rank{
     text-align: center;
     
+}
+#dream-team{
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+#dream-team .player-container img{
+    max-width:100%;
 }

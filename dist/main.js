@@ -6,6 +6,23 @@ $('#btn-search').on('click', function(){
   apiManager.getPlayers(searchQuery, renderer.renderPlayers)
 })
 
+$('#btn-dream').on('click', function(){
+  apiManager.getDreamPlayers(renderer.renderDreamTeam)
+})
+
+
+$('body').on('click','.btn-removeDream', function(event){
+  event.stopPropagation()
+  const playerId = $(this).closest('.player-container').data().id
+  apiManager.removeDreamPlayers(playerId, renderer.renderDreamTeam)
+})
+
+$('body').on('click','.btn-addDream', function(event){
+  event.stopPropagation()
+  const playerId = $(this).closest('.player-container').data().id
+  apiManager.addDreamPlayers(playerId, renderer.renderDreamTeam)
+})
+
 $('body').on('click','.player-container', function(){
   apiManager.getPlayerStats({
     firstname:$(this).data().firstname,

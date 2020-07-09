@@ -15,6 +15,13 @@ class Render {
     $(element).append(HTML)
     console.log(data)
   }
+  renderDreamTeam(data){
+    console.log(data)
+    const template = Handlebars.compile($(`#dream-template`).html());
+    const HTML = template({ data })
+    $(`#dream-team`).empty().append(HTML)
+    
+  }
 }
 
 
