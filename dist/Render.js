@@ -28,7 +28,6 @@ class Render {
     $(element).append(HTML)
   }
   renderDreamTeam = data => {
-    console.log(data)
     if(data === 'double') this.createMessage('Player Already In DreamTeam')
     else if(data === 'full') this.createMessage('DreamTeam Full')
     else {
