@@ -1,3 +1,38 @@
+const urllib = require('urllib')
+
+let state = {
+  isLoaded:false,
+  playersIds:0
+}
+let allPlayersData = []
+let teamsLoaded = {isLoaded:false}
+let playersIds = {current:0}
+
+const getAllPlayers = () => {
+  urllib.request(APIURL, function (err, data, res) {
+    if (err) {
+      console.log(`Error recieving players`)
+      throw err
+    }
+    const allPlayersArary = JSON.parse(data).league.standard
+    const activePlayers = allPlayersArary.filter(player => player.isActive === true)  
+    allPlayersData = activePlayers.forEach(player => {
+      allPlayersData.push({
+        id: ++state.playersIds,
+        firstName: player.firstName,
+        lastName: player.lastName,
+        jersey: player.jersey,
+        position: player.pos,
+        teamId: player.teamId,
+        isActive:true
+      })
+    })
+    state.isLoaded = true
+    console.log('All teams loaded')
+  })
+}
+
+
 const teamsData = [
   {
     "teamId": 1610612737,
@@ -181,6 +216,7 @@ const teamsData = [
   }
 ]
 
+
 const dreamTeam = []
 
 const APIURL = 'http://data.nba.net/10s/prod/v1/2018/players.json'
@@ -188,9 +224,14 @@ const STATSURL = 'https://nba-players.herokuapp.com/players-stats'
 const IMAGEURLS = 'https://nba-players.herokuapp.com/players/:lastName/:firstName'
 
 module.exports = {
+  getAllPlayers,
+  state,
+  playersIds,
+  allPlayersData,
+  teamsLoaded,
   teamsData,
   dreamTeam,
   APIURL,
   STATSURL,
-  IMAGEURLS
+  IMAGEURLS,
 }

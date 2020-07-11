@@ -1,8 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Graduate&family=Josefin+Slab:wght@300;400;600;700&display=swap');
 body, html {
     margin:0;
     padding: 0;
     font-family: 'Josefin Slab', serif;
+    overflow-x: hidden;
 }
 button{
     outline: 0;
@@ -10,13 +11,45 @@ button{
 }
 nav{
     width:90%;
-    height: 50px;
+    height: 100px;
     background-color: #1a53a5;
     display: grid;
     justify-content: center;
     grid-template-columns: 6fr 3fr 3fr;
-    margin: 2% 5%;
+    margin: 2% 5% 0 5%;
     grid-gap: 10px;
+}
+#load-save{
+    display: grid;
+    grid-template-areas: 
+        "i s"
+        "o d";
+    grid-gap:5px;
+    padding: 5px;
+}
+#message{
+    width:90%;
+    margin: 1% 5%;
+    font-size:20px;
+    text-align: center;
+    padding: 1% 0;
+    color:#d51313;
+    text-decoration: underline;
+}
+header{
+    width: 100vw;
+}
+#logo{
+    width: 75px;
+    display: block;
+    margin: 20px auto 0 auto;
+}
+#title{
+    display: block;
+    font-size:7vw;
+    width: 100%;
+    text-align: center;
+    margin:20px 0;
 }
 #root-app{
     max-width: 100%;
@@ -27,22 +60,27 @@ nav{
     flex-wrap: wrap;
     justify-content: space-around;
     padding: 10px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 .player-container{
     display: grid;
     grid-template-rows: auto;
     text-align: center;
     box-shadow: 1px 1px 4px #c7c7c7;
-    margin: 10px 0;
+    margin: 10px 5px;
+    padding: 10px;
     cursor: pointer;
     position: relative;
+    background-color: #fff;
+    max-width: 250px;
 }
 .player-container:hover{
     background-color: #f29898;
     box-shadow: 0px 0px 0px #c7c7c7;
 }
 .player-container img{
-    padding: 10px;
+    width: 100%;
 }
 .player-jersey{
     padding: 10px;
@@ -53,6 +91,7 @@ input {
     font-family: 'Josefin Slab', serif;
     font-weight: 700;
     padding: 10px 20px;
+    outline: 0;
 }
 #btn-search{
     margin: 5px;
@@ -69,14 +108,46 @@ input {
 #btn-search:active{
     background-color: #ff0000;
 }
-#btn-dream{
-    margin: 5px;
+
+#team-name{
+    grid-area: i;
+}
+#slct-dream{
     font-family: 'Josefin Slab', serif;
     font-weight: 700;
-    font-size: 20px;
+    font-size: 15px;
     background-color: #ff0000;
     color:#fff;
     cursor: pointer;
+    outline: 0;
+    border: 0;
+    text-align: center;
+    padding-left: 20px;
+    grid-area: o;
+}
+
+#slct-dream option{
+    zoom: 1.5;
+}
+#btn-dream{
+    margin: 0 5px;
+    font-family: 'Josefin Slab', serif;
+    font-weight: 700;
+    font-size: 15px;
+    background-color: #ff0000;
+    color:#fff;
+    cursor: pointer;
+    grid-area: s;
+}
+#delete-dream{
+    margin: 0 5px;
+    font-family: 'Josefin Slab', serif;
+    font-weight: 700;
+    font-size: 15px;
+    background-color: #ff0000;
+    color:#fff;
+    cursor: pointer;
+    grid-area: d;
 }
 #btn-dream:hover{
     background-color: #de4f4f;
@@ -108,12 +179,16 @@ input {
     text-align: left;
     padding-left: 20px;
     grid-gap:10px;
-    font-size: 13px;
+    font-size: 12px;
     border-bottom: 1px solid #bbb;
     align-content: center;
 }
+.player-stats-attr{
+overflow: hidden;
+}
 .player-stats-rank{
     text-align: center;
+    overflow: hidden;
     
 }
 #dream-team{
@@ -121,6 +196,7 @@ input {
     display: flex;
     justify-content: center;
     align-content: center;
+    background-color: #e8bb58;
 }
 #dream-team .player-container img{
     max-width:100%;

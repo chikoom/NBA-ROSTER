@@ -1,5 +1,14 @@
 const apiManager = new APIManager()
 const renderer = new Render()
+const storageManager = new StorageManager()
+
+apiManager.getDreamPlayers(renderer.renderDreamTeam)
+renderer.renderSaveTeam(storageManager.getAllTeams())
+
+$('#slct-dream').on('change', function(){
+  const teamName = $(this).val()
+  renderer.renderDreamTeam(storageManager.getTeam(teamName))
+})
 
 $('#btn-search').on('click', function(){
   const searchQuery = $('#inp-team').val().toLowerCase()
@@ -7,9 +16,9 @@ $('#btn-search').on('click', function(){
 })
 
 $('#btn-dream').on('click', function(){
-  apiManager.getDreamPlayers(renderer.renderDreamTeam)
+  const teamName = $('#team-name').val().trim()
+  storageManager.saveTeam(teamName ,apiManager.getDream(), renderer.renderSaveTeam)
 })
-
 
 $('body').on('click','.btn-removeDream', function(event){
   event.stopPropagation()

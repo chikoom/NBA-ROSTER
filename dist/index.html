@@ -11,17 +11,25 @@
 </head>
 <body>
   <div id="root-app">
+    <header id="header-logo">
+      <img id="logo" src="nba-logo.png" alt="NBA logo">
+      <h1 id="title">NBA DREAM TEAM</h1>
+    </header>
     <nav>
-      <input id="inp-team" type="text">
+      <input id="inp-team" type="text" placeholder="Enter Team Name">
       <button id="btn-search">Get Roster</button>
-      <button id="btn-dream">DreamTeam</button>
+      <div id="load-save">
+        <input type="text" id="team-name" placeholder="Enter Name">
+        <button id="btn-dream">Save Team</button>
+        <select id="slct-dream">
+          <option value="0">Select Dream</option>
+        </select>
+        <button id="delete-dream">Delete Team</button>
+      </div>
     </nav>
-    <div id="dream-team">
-
-    </div>
-    <div id="result">
-
-    </div>
+    <div id="message"></div>
+    <div id="dream-team"></div>
+    <div id="result"></div>
   </div>
   
   <script id="players-template" type="text/x-handlebars-template">
@@ -66,6 +74,7 @@
 
   <script src="./handlebars/dist/handlebars.min.js"></script>
   <script src="./jquery/dist/jquery.min.js"></script>
+  <script src="./StorageManager.js"></script>
   <script src="./APIManager.js"></script>
   <script src="./Render.js"></script>
   <script src="main.js"></script>
