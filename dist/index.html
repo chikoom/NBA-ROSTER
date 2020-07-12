@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" 
+      type="image/png" 
+      href="nba.png">
+  <title>NBA ROSTER</title>
+</head>
+<body>
+  <div id="root-app">
+    <header id="header-logo">
+      <img id="logo" src="nba-logo.png" alt="NBA logo">
+      <h1 id="title">NBA DREAM TEAM</h1>
+    </header>
+    <nav>
+      <input id="inp-team" type="text" placeholder="Enter Team Name">
+      <button id="btn-search">Get Roster</button>
+      <div id="load-save">
+        <input type="text" id="team-name" placeholder="Enter Name">
+        <button id="btn-dream">Save Team</button>
+        <select id="slct-dream">
+          <option value="0">Select Dream</option>
+        </select>
+        <button id="delete-dream">Delete Team</button>
+      </div>
+    </nav>
+    <div id="message"></div>
+    <div id="dream-team"></div>
+    <div id="result"></div>
+  </div>
+  
+  <script id="players-template" type="text/x-handlebars-template">
+    <div id="team-logo">
+      <img src="http://i.cdn.turner.com/nba/nba/.element/img/1.0/teamsites/logos/teamlogos_500x500/{{data.teamAcr}}.png">
+    </div>
+    <div id="all-players-container">
+    {{#each data.playersData}}
+      <div class="player-container" data-id="{{id}}" data-firstname="{{firstName}}" data-lastname="{{lastName}}">
+        <h3 class="player-name">{{firstName}} {{lastName}}</h3>
+        <span class="player-position">{{position}}</span>
+        <img onerror="this.src='./player.png'" src="https://nba-players.herokuapp.com/players/{{lastName}}/{{firstName}}">
+        <span class="player-jersey">{{jersey}}</span>
+        <button class="btn-addDream">Dream Team</button>
+      </div>
+    {{/each}}
+    </div>
+  </script>
+
+  <script id="dream-template" type="text/x-handlebars-template">
+    {{#each data}}
+      <div class="player-container" data-id="{{id}}" data-firstname="{{firstName}}" data-lastname="{{lastName}}">
+        <h3 class="player-name">{{firstName}} {{lastName}}</h3>
+        <span class="player-position">{{position}}</span>
+        <img onerror="this.src='./player.png'" src="https://nba-players.herokuapp.com/players/{{lastName}}/{{firstName}}">
+        <span class="player-jersey">{{jersey}}</span>
+        <button class="btn-removeDream">Remove</button>
+      </div>
+    {{/each}}
+  </script>
+
+  <script id="stats-template" type="text/x-handlebars-template">
+    <div class="player-stats">
+      {{#each data}}
+        <div class="player-stats-row">
+          <div class="player-stats-attr">{{@key}}</div>
+          <div class="player-stats-rank">{{this}}</div>
+        </div>
+      {{/each}}
+    </div>
+  </script>
+
+  <script src="./handlebars/dist/handlebars.min.js"></script>
+  <script src="./jquery/dist/jquery.min.js"></script>
+  <script src="./StorageManager.js"></script>
+  <script src="./APIManager.js"></script>
+  <script src="./Render.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
