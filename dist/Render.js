@@ -36,7 +36,9 @@ class Render {
       const HTML = template({ data })
       $(`#dream-team`).empty().append(HTML)
     }
-    
+  }
+  clearDreamTeam = () => {
+    $(`#dream-team`).empty()
   }
 }
 

@@ -17,10 +17,15 @@ class StorageManager{
     localStorage.setItem('teams', JSON.stringify(this.savedTeams))
     renderCallback(this.getAllTeams(),'')
   }
+  deleteTeam = (teamName) => {
+    this.savedTeams = this.savedTeams.filter(team => !team[teamName])
+    localStorage.setItem('teams', JSON.stringify(this.savedTeams))
+    return this.savedTeams
+  }
   getAllTeams = () => {
     return JSON.parse(localStorage.getItem('teams'))
   }
-  getTeam = (teamName) => {
+  getTeam = teamName => {
     let selectedTeam = []
     if(teamName!=="0"){
       const allTeams = this.getAllTeams()

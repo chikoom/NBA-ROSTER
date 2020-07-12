@@ -10,6 +10,12 @@ $('#slct-dream').on('change', function(){
   renderer.renderDreamTeam(storageManager.getTeam(teamName))
 })
 
+$('#delete-dream').on('click', function(){
+  const teamToDelete = $('#slct-dream').val()
+  renderer.renderSaveTeam(storageManager.deleteTeam(teamToDelete))
+  renderer.clearDreamTeam()
+})
+
 $('#btn-search').on('click', function(){
   const searchQuery = $('#inp-team').val().toLowerCase()
   apiManager.getPlayers(searchQuery, renderer.renderPlayers)
